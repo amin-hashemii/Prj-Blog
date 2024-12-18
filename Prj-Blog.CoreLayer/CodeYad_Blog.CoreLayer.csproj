@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Utities\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\Prj-Blog.DataLayes\CodeYad_Blog.DataLayer.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Prj_Blog.CoreLayer.Services.Users;
 using Prj_Blog.DataLayes.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddDbContext<BlogContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("Default"));

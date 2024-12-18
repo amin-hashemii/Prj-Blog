@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="/authLayout/css/main.css" />
+</head>
+
+<body>
+    <div class="container">
+        <section id="content">
+            @RenderBody()
+        </section>
+        <partial name="_ValidationScriptsPartial" />
+        <script src="~/js/jquery.min.js"></script>
+        @await RenderSectionAsync("Script",false)
+    </div>
+</body>
+
+</html>

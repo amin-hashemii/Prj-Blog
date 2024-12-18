@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prj-Blog.Web", "Prj-Blog.Web\Prj-Blog.Web.csproj", "{010CC9D4-E6A1-42A3-AE84-CAF8685E2C27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prj-Blog.Web", "Prj-Blog.Web\Prj-Blog.Web.csproj", "{010CC9D4-E6A1-42A3-AE84-CAF8685E2C27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prj-Blog.DataLayes", "Prj-Blog.DataLayes\Prj-Blog.DataLayes.csproj", "{4ADBFD48-81F9-4F84-AA4D-5284B8F15E6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeYad_Blog.DataLayer", "Prj-Blog.DataLayes\CodeYad_Blog.DataLayer.csproj", "{4ADBFD48-81F9-4F84-AA4D-5284B8F15E6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prj-Blog.CoreLayer", "Prj-Blog.CoreLayer\Prj-Blog.CoreLayer.csproj", "{01992F08-84A4-49B2-96CD-A7DFE4F9527D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeYad_Blog.CoreLayer", "Prj-Blog.CoreLayer\CodeYad_Blog.CoreLayer.csproj", "{01992F08-84A4-49B2-96CD-A7DFE4F9527D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
