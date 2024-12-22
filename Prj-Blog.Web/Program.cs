@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Prj_Blog.CoreLayer.Services.Users;
+
+//using Prj_Blog.CoreLayer.Services.Users;
 using Prj_Blog.DataLayes.Context;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Prj-Blog.CoreLayer\CodeYad_Blog.CoreLayer.csproj" />
-    <ProjectReference Include="..\Prj-Blog.DataLayes\CodeYad_Blog.DataLayer.csproj" />
+    <ProjectReference Include="..\Prj-Blog.CoreLayer\Prj_Blog.CoreLayer.csproj" />
+    <ProjectReference Include="..\Prj-Blog.DataLayes\Prj_Blog.DataLayer.csproj" />
   </ItemGroup>
 
 </Project>

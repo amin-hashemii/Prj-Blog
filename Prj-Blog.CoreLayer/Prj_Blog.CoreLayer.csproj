@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Prj-Blog.DataLayes\CodeYad_Blog.DataLayer.csproj" />
+    <ProjectReference Include="..\Prj-Blog.DataLayes\Prj_Blog.DataLayer.csproj" />
   </ItemGroup>
 
 </Project>

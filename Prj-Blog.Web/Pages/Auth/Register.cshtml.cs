@@ -1,8 +1,13 @@
+﻿
+using Prj_Blog.CoreLayer.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Prj_Blog.CoreLayer.DTOs;
+using Prj_Blog.CoreLayer.DTOs.Users;
 using Prj_Blog.CoreLayer.Services.Users;
-using Prj_Blog.CoreLayer.Utities;
+
+//using Prj_Blog.CoreLayer.DTOs;
+//using Prj_Blog.CoreLayer.Services.Users;
+//using Prj_Blog.CoreLayer.Utities;
 using System.ComponentModel.DataAnnotations;
 
 namespace Prj_Blog.Web.Pages.Auth
@@ -15,17 +20,17 @@ namespace Prj_Blog.Web.Pages.Auth
 
         #region propertis
 
-        [Display(Name = "??? ??????")]
-        [Required(ErrorMessage = "{0} ?? ???? ????")]
+        [Display(Name = "نام کاربری")]
+        [Required(ErrorMessage = "{0} را وارد کنید")]
         public string UserName { get; set; }
 
-        [Display(Name = "??? ? ??? ????????")]
-        [Required(ErrorMessage = "{0} ?? ???? ????")]
+        [Display(Name = "نام و نام خانوادگی")]
+        [Required(ErrorMessage = "{0} را وارد کنید")]
         public string FullName { get; set; }
 
-        [Display(Name = "???? ????")]
-        [Required(ErrorMessage = "{0} ?? ???? ????")]
-        [MinLength(6, ErrorMessage = "{0} ???? ????? ?? 5 ??????? ????")]
+        [Display(Name = "کلمه عبور")]
+        [Required(ErrorMessage = "{0}را وارد کنید")]
+        [MinLength(6, ErrorMessage = "{0}  باید بیشتز از5 کارکتر باشد")]
         public string Password { get; set; }
 
 
@@ -42,7 +47,7 @@ namespace Prj_Blog.Web.Pages.Auth
         }
         public IActionResult OnPost()
         {
-            var result = _userService.RegisterUsers(new UserRegisterDto()
+            var result = _userService.RegisterUser(new UserRegisterDto()
             {
                 UserName = UserName,
                 Password = Password,
@@ -53,7 +58,12 @@ namespace Prj_Blog.Web.Pages.Auth
                 ModelState.AddModelError("UserName", result.Message);
                 return Page();
             }
-            return RedirectToPage("Login");
+          return RedirectToPage("Login");
         }
+
+
+
+
     }
-}
+    }
+
