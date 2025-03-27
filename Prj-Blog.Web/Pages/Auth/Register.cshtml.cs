@@ -47,6 +47,10 @@ namespace Prj_Blog.Web.Pages.Auth
         }
         public IActionResult OnPost()
         {
+            if (ModelState.IsValid == false)
+            {
+                return Page();
+            }
             var result = _userService.RegisterUser(new UserRegisterDto()
             {
                 UserName = UserName,

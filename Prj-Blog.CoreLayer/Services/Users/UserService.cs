@@ -20,10 +20,21 @@ namespace Prj_Blog.CoreLayer.Services.Users
         {
             _context = context;
         }
+
+
+        //metod haye entity freamwork 
+        //any
+        //add
+        //savechanges
+        //first
+        //firstordefault
+        //sing
+        //singordefault
+
         public OperationResult RegisterUser(UserRegisterDto registerDto)
         {
-            var isFullNameExists=_context.Users.Any(u=>u.UserName== registerDto.UserName);
-            if (isFullNameExists)
+            var isUserNameExists=_context.Users.Any(u=>u.UserName== registerDto.UserName);
+            if (isUserNameExists)
             return OperationResult.Error("نام کاربری تکراری است");
 
             var passwordHash = registerDto.Password.EncodeToMd5();
@@ -41,6 +52,27 @@ namespace Prj_Blog.CoreLayer.Services.Users
           return OperationResult.Success();
         }
 
-       
+        public UserDto LoginUser(LoginUserDto loginUserDto)
+        {
+           var passwordhashed=loginUserDto.Password.EncodeToMd5();
+            var user=_context.Users.FirstOrDefault(u=>u.UserName == loginUserDto.UserName &&u.Password==passwordhashed);
+
+            if (user == null)
+                return null;
+
+            var userDto = new UserDto()
+            {
+                FullName = user.FullName,
+                Password =user.Password,
+                Role = user.Role,
+                UserName=user.UserName,
+                RegisterDate =user.CreationDate,
+                User_Id = user.Id,
+            };
+
+
+            return userDto;
+        }
+
     }
 }
