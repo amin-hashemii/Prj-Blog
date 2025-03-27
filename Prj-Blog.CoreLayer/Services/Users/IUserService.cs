@@ -17,5 +17,6 @@ namespace Prj_Blog.CoreLayer.Services.Users
     {
         //void RegisterUser(UserRegisterDto registerDto);
         OperationResult RegisterUser(UserRegisterDto registerDto);
+        UserDto LoginUser(LoginUserDto loginUserDto);
     }
 }
