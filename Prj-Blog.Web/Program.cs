@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Prj_Blog.CoreLayer.Services.Categorys;
 using Prj_Blog.CoreLayer.Services.Users;
 
 //using Prj_Blog.CoreLayer.Services.Users;
@@ -14,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddDbContext<BlogContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("Default"));

@@ -1,0 +1,51 @@
+﻿@model List<Prj_Blog.CoreLayer.DTOs.Category.CategoryDto>
+@{
+    ViewData["Title"] = "دسته بندی ها";
+    var counter = 1;
+}
+<section class="content-header">
+    <h1>
+            @ViewData["Title"]; 
+    </h1>
+    <ol class="breadcrumb">
+        <li><a asp-area="Admin" asp-controller="Category" asp-action="index"><i class="fa fa-dashboard"></i> خانه</a></li>
+        <li class="active">@ViewData["Title"]</li>
+    </ol>
+</section>
+<section class="content">
+    <a class="btn btn-success "style="margin-bottom:5px;" asp-area="Admin" asp-controller="Category" asp-action="Add">افزودن گروه جدید</a>
+    <div class="box box-primary">
+        <div class="box-body p-0">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>عنوان</th>
+                        <th>زیر گروه</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@counter</td>
+                            <td>@item.Title</td>
+                            <td></td>
+                            <td>
+                                <a asp-area="Admin"  asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">ویرایش</a>
+                            </td>
+
+                        </tr>
+
+                        counter += 1;
+                    }
+                   
+                </tbody>
+</table>
+
+        </div>
+
+    </div>
+
+</section>
