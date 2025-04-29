@@ -15,5 +15,6 @@ namespace Prj_Blog.CoreLayer.Services.Categorys
         List<CategoryDto> GetAllCategory();
         CategoryDto GetCategoryBy(int id);
         CategoryDto GetCategoryBy(string slug);
+        bool IsSlugExists(string slug);
     }
 }

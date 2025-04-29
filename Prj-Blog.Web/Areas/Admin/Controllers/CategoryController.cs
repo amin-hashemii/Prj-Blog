@@ -4,6 +4,7 @@ using Prj_Blog.CoreLayer.Services.Categorys;
 using Prj_Blog.CoreLayer.Utilities;
 using Prj_Blog.DataLayes.Entities;
 using Prj_Blog.Web.Areas.Admin.Models.Categories;
+using System.ComponentModel.Design.Serialization;
 
 namespace Prj_Blog.Web.Areas.Admin.Controllers
 {
@@ -21,14 +22,24 @@ namespace Prj_Blog.Web.Areas.Admin.Controllers
         {
             return View(_catgory.GetAllCategory());
         }
-        public IActionResult Add()
+        [Route("/admin/category/add/{parentid?}")]
+        public IActionResult Add(int? parentid)
         {
+           
             return View();
         }
-        [HttpPost]
-        public IActionResult Add(CreateCategoryViewModel createviewmodel)
+
+        [HttpPost("/admin/category/add/{parentid?}")]
+
+        public IActionResult Add(int? parentid, CreateCategoryViewModel createviewmodel)
         {
+            createviewmodel.ParentId = parentid;
             var result = _catgory.CreateCategory(createviewmodel.MapToDto());
+            if (result.Status != OperationResultStatus.Success)
+            {
+                ModelState.AddModelError(nameof(createviewmodel.Slug), result.Message);
+                return View();
+            }
             return RedirectToAction("Index");
         }
         public IActionResult Edit(int id)
@@ -40,7 +51,7 @@ namespace Prj_Blog.Web.Areas.Admin.Controllers
             var model = new EditCategoryViewModel()
             {
                 Title = category.Title,
-                Slug = category.Slug,
+                Slug = category.Slug.ToSlug(),
                 MetaTag = category.MetaTag,
                 MetaDescription = category.MetaDescription,
             };
@@ -54,7 +65,7 @@ namespace Prj_Blog.Web.Areas.Admin.Controllers
             var resault = _catgory.EditCategory(new EditCategoryDto()
             {
                 Title = editmodel.Title,
-                Slug = editmodel.Slug,
+                Slug = editmodel.Slug.ToSlug(),
                 MetaTag = editmodel.MetaTag,
                 MetaDescription = editmodel.MetaDescription,
                  Id = id
