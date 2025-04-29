@@ -26,6 +26,9 @@ namespace Prj_Blog.CoreLayer.Services.Categorys
 
         public OperationResult CreateCategory(CreateCategoryDto command)
         {
+            if (IsSlugExists(command.Slug))
+                return OperationResult.Error("slug is exist");
+
             var category = new Category()
             {
                 Title = command.Title,
@@ -47,6 +50,11 @@ namespace Prj_Blog.CoreLayer.Services.Categorys
            var category = _context.Categories.FirstOrDefault(c => c.Id == command.Id);
             if (category ==null)
                 return OperationResult.NotFound();
+
+
+            if(command.Slug.ToSlug() !=category.Slug)
+                if (IsSlugExists(command.Slug))
+                    return OperationResult.Error("slug is exist");
 
             category.MetaDescription = command.MetaDescription;
             category.Slug = command.Slug;
@@ -76,6 +84,11 @@ namespace Prj_Blog.CoreLayer.Services.Categorys
             if (category == null)
                 return null;
             return CategoryMapper.Map(category);
+        }
+
+        public bool IsSlugExists(string slug)
+        {
+           return _context.Categories.Any(c => c.Slug == slug.ToSlug());
         }
     }
 }

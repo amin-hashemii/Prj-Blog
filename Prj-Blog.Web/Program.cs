@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Prj_Blog.CoreLayer.Services.Categorys;
+using Prj_Blog.CoreLayer.Services.Post;
 using Prj_Blog.CoreLayer.Services.Users;
 
 //using Prj_Blog.CoreLayer.Services.Users;
@@ -16,6 +17,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IPostService, PostService>();
 builder.Services.AddDbContext<BlogContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
